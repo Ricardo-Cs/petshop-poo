@@ -1,0 +1,74 @@
+# Arquivos gerados pelo Maven
+/target/
+pom.xml.tag
+pom.xml.next
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.stacktrace
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+# .mvn/wrapper/maven-wrapper.jar # Mantenha esta linha COMENTADA.
+# O arquivo maven-wrapper.jar geralmente DEVE ser versionado para garantir que todos usem a mesma versão do Maven.
+
+# Arquivos gerados pelo IntelliJ IDEA
+/.idea/
+*.iml
+*.iws
+*.ipr
+/out/
+.flattened-pom.xml
+
+# Arquivos gerados pelo Eclipse (se relevante)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# Arquivos gerados pelo NetBeans (se relevante)
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+# Arquivos gerados pelo VS Code (ignorar se as configurações locais não precisam ser compartilhadas)
+/.vscode/
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store # macOS
+Thumbs.db # Windows
+ehthumbs.db # Windows
+Desktop.ini # Windows
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+/log/
+/logs/
+
+# Arquivos de teste e cobertura
+/test-results/
+/surefire-reports/
+/failsafe-reports/
+/jacoco/
+*.exec
+
+# Arquivos do Java em geral
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.gz
+hs_err_pid*.log # Crash logs da JVM
+
+# IDE-specific test results (IntelliJ)
+/target/surefire-reports/
+/target/test-classes/
