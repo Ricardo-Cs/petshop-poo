@@ -1,4 +1,4 @@
-package service;
+package com.poo.petshop.service;
 
 public class ClienteService {
 }
