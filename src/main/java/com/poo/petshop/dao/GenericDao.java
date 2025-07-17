@@ -35,10 +35,10 @@ public abstract class GenericDao<T> {
         }
     }
 
-    abstract List<T> findAll();
-    abstract T findById(Long id);
-    abstract List<T> findByName(String name);
-    abstract T save(T entity);
-    abstract T update(T entity);
-    abstract void delete(Long id);
+    public abstract List<T> findAll();
+    public abstract T findById(Long id);
+    public abstract List<T> findByName(String name);
+    public abstract T save(T entity);
+    public abstract T update(T entity);
+    public abstract void delete(Long id);
 }
