@@ -6,16 +6,26 @@ import javax.persistence.*;
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column
-    private String nome;
-    @Column
-    private String especie;
-    @Column
-    private String raca;
-    @Column
-    private String tutor;
+    private Long id;
 
+    private String nome;
+
+    private String especie;
+
+    private String raca;
+
+    @ManyToOne
+    @JoinColumn(name = "tutor_id")
+    private Tutor tutor;
+
+    public Animal() { }
+
+    public Animal(String nome, String especie, String raca, Tutor tutor) {
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.tutor = tutor;
+    }
 
     public String getNome() {
         return nome;
@@ -25,11 +35,11 @@ public class Animal {
         this.nome = nome;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +59,22 @@ public class Animal {
         this.raca = raca;
     }
 
-    public String getTutor() {
+    public Tutor getTutor() {
         return tutor;
     }
 
-    public void setTutor(String tutor) {
+    public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", especie='" + especie + '\'' +
+                ", raca='" + raca + '\'' +
+                ", tutor=" + (tutor != null ? tutor.getNome() : "N/A") +
+                '}';
     }
 }
