@@ -7,17 +7,17 @@ import java.util.List;
 public class TutorDao extends GenericDao<Tutor> {
 
     @Override
-    List<Tutor> findAll() {
+    public List<Tutor> findAll() {
         return List.of();
     }
 
     @Override
-    Tutor findById(Long id) {
+    public Tutor findById(Long id) {
         return null;
     }
 
     @Override
-    List<Tutor> findByName(String name) {
+    public List<Tutor> findByName(String name) {
         return List.of();
     }
 
@@ -30,12 +30,12 @@ public class TutorDao extends GenericDao<Tutor> {
     }
 
     @Override
-    Tutor update(Tutor entity) {
+    public Tutor update(Tutor entity) {
         return null;
     }
 
     @Override
-    void delete(Long id) {
+    public void delete(Long id) {
 
     }
 }
