@@ -6,6 +6,7 @@ import com.poo.petshop.model.Animal;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 public class AnimalDao extends GenericDao<Animal> {
 
@@ -15,8 +16,8 @@ public class AnimalDao extends GenericDao<Animal> {
     }
 
     @Override
-    public Animal findById(Long id) {
-        return executeQuery(em -> em.find(Animal.class, id));
+    public Optional<Animal> findById(Long id) {
+        return executeQuery(em -> Optional.ofNullable(em.find(Animal.class, id)));
     }
 
     @Override

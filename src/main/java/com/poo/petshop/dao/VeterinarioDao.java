@@ -4,6 +4,7 @@ import com.poo.petshop.model.Veterinario;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 public class VeterinarioDao extends GenericDao<Veterinario>{
     @Override
@@ -12,8 +13,8 @@ public class VeterinarioDao extends GenericDao<Veterinario>{
     }
 
     @Override
-    public Veterinario findById(Long id) {
-        return executeQuery(em -> em.find(Veterinario.class, id));
+    public Optional<Veterinario> findById(Long id) {
+        return executeQuery(em -> Optional.ofNullable(em.find(Veterinario.class, id)));
     }
 
     @Override

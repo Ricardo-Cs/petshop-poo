@@ -3,7 +3,9 @@ package com.poo.petshop.dao;
 import com.poo.petshop.model.Atendente;
 
 import javax.persistence.TypedQuery;
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 public class AtendenteDao extends GenericDao<Atendente>{
     @Override
@@ -12,8 +14,8 @@ public class AtendenteDao extends GenericDao<Atendente>{
     }
 
     @Override
-    public Atendente findById(Long id) {
-        return executeQuery(em -> em.find(Atendente.class, id));
+    public Optional<Atendente> findById(Long id) {
+        return executeQuery(em -> Optional.ofNullable(em.find(Atendente.class, id)));
     }
 
     @Override

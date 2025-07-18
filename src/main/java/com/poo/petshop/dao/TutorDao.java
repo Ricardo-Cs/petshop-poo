@@ -2,8 +2,10 @@ package com.poo.petshop.dao;
 
 import com.poo.petshop.model.Tutor;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 public class TutorDao extends GenericDao<Tutor> {
 
@@ -12,13 +14,9 @@ public class TutorDao extends GenericDao<Tutor> {
         return executeQuery(em -> em.createQuery("FROM Tutor", Tutor.class).getResultList());
     }
 
-    public Tutor findCpf(String Cpf){
-        return executeQuery(em -> em.find(Tutor.class, Cpf));
-    }
-
     @Override
-    public Tutor findById(Long id) {
-        return executeQuery(em -> em.find(Tutor.class, id));
+    public Optional<Tutor> findById(Long id) {
+        return executeQuery(em -> Optional.ofNullable(em.find(Tutor.class, id)));
     }
 
     @Override
@@ -27,6 +25,20 @@ public class TutorDao extends GenericDao<Tutor> {
             TypedQuery<Tutor> query = em.createQuery("FROM Tutor a WHERE a.nome LIKE :name", Tutor.class);
             query.setParameter("name", "%" + name + "%");
             return query.getResultList();
+        });
+    }
+
+    public Optional<Tutor> findByCpf(String cpf) {
+        return executeQuery(em -> {
+            try {
+                return Optional.ofNullable(
+                        em.createQuery("FROM Tutor t WHERE t.cpf = :cpf", Tutor.class)
+                                .setParameter("cpf", cpf)
+                                .getSingleResult()
+                );
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
         });
     }
 

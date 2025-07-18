@@ -4,6 +4,7 @@ import com.poo.petshop.config.JPAConnection;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public abstract class GenericDao<T> {
@@ -36,7 +37,7 @@ public abstract class GenericDao<T> {
     }
 
     public abstract List<T> findAll();
-    public abstract T findById(Long id);
+    public abstract Optional<T> findById(Long id);
     public abstract List<T> findByName(String name);
     public abstract T save(T entity);
     public abstract T update(T entity);
