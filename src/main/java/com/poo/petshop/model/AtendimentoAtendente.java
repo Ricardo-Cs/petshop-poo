@@ -2,7 +2,7 @@ package com.poo.petshop.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "atendimentoAtendente")
 public class AtendimentoAtendente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

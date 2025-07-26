@@ -3,7 +3,7 @@ package com.poo.petshop.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "atendimentoVeterinario")
 public class AtendimentoVeterinario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,5 +66,4 @@ public class AtendimentoVeterinario {
     public void setStatus(EStatusAtendimento status) {
         this.status = status;
     }
-
 }
