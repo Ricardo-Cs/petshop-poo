@@ -1,24 +1,26 @@
 package com.poo.petshop.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class AtendimentoAtendente {
-    private Long Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private Atendente atendente;
+    @ManyToOne
     private Tutor tutor;
     private String tipoAtendimento;
 
-    public AtendimentoAtendente() {
-
-    }
+    public AtendimentoAtendente() { }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public Atendente getAtendente() {
@@ -44,5 +46,4 @@ public class AtendimentoAtendente {
     public void setTipoAtendimento(String tipoAtendimento) {
         this.tipoAtendimento = tipoAtendimento;
     }
-
 }

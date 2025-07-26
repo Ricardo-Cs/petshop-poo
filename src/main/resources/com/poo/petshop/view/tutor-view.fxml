@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.TutorController" prefWidth="600"
+            prefHeight="400">
+    <Label layoutX="20" layoutY="20" text="Nome:"/>
+    <TextField fx:id="nomeField" layoutX="80" layoutY="16" prefWidth="200"/>
+
+    <Label layoutX="20" layoutY="60" text="CPF:"/>
+    <TextField fx:id="cpfField" layoutX="80" layoutY="56" prefWidth="200"/>
+
+    <Button text="Salvar" layoutX="300" layoutY="36" onAction="#salvarTutor"/>
+
+    <TableView fx:id="tutorTable" layoutX="20" layoutY="100" prefWidth="560" prefHeight="240">
+        <columns>
+            <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="280"/>
+            <TableColumn fx:id="cpfColumn" text="CPF" prefWidth="280"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusLabel" layoutX="20" layoutY="360" prefWidth="560"/>
+
+    <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 10 20 10 20;"/>
+</AnchorPane>

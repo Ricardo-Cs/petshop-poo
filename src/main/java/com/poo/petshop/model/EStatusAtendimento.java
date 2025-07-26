@@ -4,5 +4,4 @@ public enum EStatusAtendimento {
     Espera,
     Iniciado,
     Finalizado;
-
 }

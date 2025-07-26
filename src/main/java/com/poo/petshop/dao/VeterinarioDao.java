@@ -1,7 +1,9 @@
 package com.poo.petshop.dao;
 
+import com.poo.petshop.model.Tutor;
 import com.poo.petshop.model.Veterinario;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +25,36 @@ public class VeterinarioDao extends GenericDao<Veterinario>{
             TypedQuery<Veterinario> query = em.createQuery("FROM Veterinario a WHERE a.nome LIKE :name", Veterinario.class);
             query.setParameter("name", "%" + name + "%");
             return query.getResultList();
-        });    }
+        });
+    }
+
+    public Optional<Tutor> findByMatricula(String matricula) {
+        return executeQuery(em -> {
+            try {
+                return Optional.ofNullable(
+                        em.createQuery("FROM Tutor t WHERE t.matricula = :matricula", Tutor.class)
+                                .setParameter("matricula", matricula)
+                                .getSingleResult()
+                );
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
+        });
+    }
+
+    public Optional<Tutor> findByCrmv(String crmv) {
+        return executeQuery(em -> {
+            try {
+                return Optional.ofNullable(
+                        em.createQuery("FROM Tutor t WHERE t.crmv = :crmv", Tutor.class)
+                                .setParameter("crmv", crmv)
+                                .getSingleResult()
+                );
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
+        });
+    }
 
     @Override
     public Veterinario save(Veterinario entity) {

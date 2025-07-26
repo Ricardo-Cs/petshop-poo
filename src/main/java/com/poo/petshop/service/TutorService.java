@@ -14,9 +14,7 @@ public class TutorService implements IService<Tutor> {
 
     private final TutorDao dao;
 
-    public TutorService(TutorDao dao) {
-        this.dao = dao;
-    }
+    public TutorService(TutorDao dao) { this.dao = dao; }
 
     @Override
     public List<Tutor> findAll() {
@@ -48,40 +46,72 @@ public class TutorService implements IService<Tutor> {
             }
             return tutores;
         } catch (PersistenceException e) {
-            System.err.println("Erro ao buscar tutor por nome '" + name + "': " + e.getMessage());
-            throw new RuntimeException("Não foi possível buscar tutores por nome.", e);
+        System.err.println("Erro ao buscar tutor por nome '" + name + "': " + e.getMessage());
+        throw new RuntimeException("Não foi possível buscar tutores por nome.", e);
         }
+                }
+
+@Override
+public Tutor save(Tutor entity) {
+    if (entity == null || entity.getNome() == null || entity.getNome().trim().isEmpty()) {
+        throw new IllegalArgumentException("Tutor e nome não podem ser nulos/vazios.");
     }
 
-    @Override
-    public Tutor save(Tutor entity) {
-        if (entity == null || entity.getNome() == null || entity.getNome().trim().isEmpty()) {
-            throw new IllegalArgumentException("Tutor e nome não podem ser nulos/vazios.");
-        }
-
-        if (entity.getCpf() == null || !IsValidCpf.check(entity.getCpf())) {
-            throw new IllegalArgumentException("CPF inválido.");
-        }
-
-        if (dao.findByCpf(entity.getCpf()).isPresent()) {
-            throw new CpfDuplicadoException("Já existe um tutor cadastrado com o CPF: " + entity.getCpf());
-        }
-
-        try {
-            return dao.save(entity);
-        } catch (PersistenceException e) {
-            System.err.println("Erro ao salvar tutor: " + e.getMessage());
-            throw new RuntimeException("Erro inesperado ao salvar o tutor.", e);
-        }
+    if (entity.getCpf() == null || !IsValidCpf.check(entity.getCpf())) {
+        throw new IllegalArgumentException("CPF inválido.");
     }
 
-    @Override
-    public Tutor update(Tutor entity) {
+    if (dao.findByCpf(entity.getCpf()).isPresent()) {
+        throw new CpfDuplicadoException("Já existe um tutor cadastrado com o CPF: " + entity.getCpf());
+    }
+
+    try {
+        return dao.save(entity);
+    } catch (PersistenceException e) {
+        System.err.println("Erro ao salvar tutor: " + e.getMessage());
+        throw new RuntimeException("Erro inesperado ao salvar o tutor.", e);
+    }
+}
+
+@Override
+public Tutor update(Tutor entity) {
+    if (entity == null || entity.getId() == null) {
+        throw new IllegalArgumentException("Tutor e ID não podem ser nulos.");
+    }
+
+    Optional<Tutor> existente = dao.findById(entity.getId());
+    if (existente.isEmpty()) {
+        throw new TutorNaoEncontradoException("Tutor com ID " + entity.getId() + " não encontrado.");
+    }
+
+    if (entity.getCpf() != null && !IsValidCpf.check(entity.getCpf())) {
+        throw new IllegalArgumentException("CPF inválido.");
+    }
+
+    try {
         return dao.update(entity);
+    } catch (PersistenceException e) {
+        System.err.println("Erro ao atualizar tutor: " + e.getMessage());
+        throw new RuntimeException("Erro inesperado ao atualizar o tutor.", e);
+    }
+}
+
+@Override
+public void delete(Long id) {
+    if (id == null) {
+        throw new IllegalArgumentException("ID do tutor não pode ser nulo.");
     }
 
-    @Override
-    public void delete(Long id) {
-        dao.delete(id);
+    Optional<Tutor> existente = dao.findById(id);
+    if (existente.isEmpty()) {
+        throw new TutorNaoEncontradoException("Tutor com ID " + id + " não encontrado.");
     }
+
+    try {
+        dao.delete(id);
+    } catch (PersistenceException e) {
+        System.err.println("Erro ao deletar tutor: " + e.getMessage());
+        throw new RuntimeException("Erro inesperado ao deletar o tutor.", e);
+    }
+}
 }

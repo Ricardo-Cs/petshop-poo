@@ -1,27 +1,30 @@
 package com.poo.petshop.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 public class AtendimentoVeterinario {
-    private Long Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private Veterinario veterinario;
+    @ManyToOne
     private Animal animal;
     private LocalDateTime entrada;
     private LocalDateTime saida;
+    @Enumerated(EnumType.STRING)
     private EStatusAtendimento status;
 
-    public AtendimentoVeterinario() {
-
-    }
+    public AtendimentoVeterinario() {}
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public Veterinario getVeterinario() {

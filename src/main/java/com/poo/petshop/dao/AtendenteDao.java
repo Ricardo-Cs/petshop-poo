@@ -1,7 +1,9 @@
 package com.poo.petshop.dao;
 
 import com.poo.petshop.model.Atendente;
+import com.poo.petshop.model.Tutor;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -24,6 +26,20 @@ public class AtendenteDao extends GenericDao<Atendente>{
             TypedQuery<Atendente> query = em.createQuery("FROM Atendente a WHERE a.nome LIKE :name", Atendente.class);
             query.setParameter("name", "%" + name + "%");
             return query.getResultList();
+        });
+    }
+
+    public Optional<Tutor> findByMatricula(String matricula) {
+        return executeQuery(em -> {
+            try {
+                return Optional.ofNullable(
+                        em.createQuery("FROM Tutor t WHERE t.matricula = :matricula", Tutor.class)
+                                .setParameter("matricula", matricula)
+                                .getSingleResult()
+                );
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
         });
     }
 
