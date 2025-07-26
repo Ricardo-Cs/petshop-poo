@@ -1,4 +1,4 @@
-package com.poo.petshop.utils.exceptions;
+package com.poo.petshop.util.exceptions;
 
 public class AtendenteNaoEncontradoException extends RuntimeException {
     public AtendenteNaoEncontradoException(String message) {

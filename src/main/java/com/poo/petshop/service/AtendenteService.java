@@ -2,8 +2,8 @@ package com.poo.petshop.service;
 
 import com.poo.petshop.dao.AtendenteDao;
 import com.poo.petshop.model.Atendente;
-import com.poo.petshop.utils.exceptions.AtendenteNaoEncontradoException;
-import com.poo.petshop.utils.exceptions.MatriculaDuplicadaException;
+import com.poo.petshop.util.exceptions.AtendenteNaoEncontradoException;
+import com.poo.petshop.util.exceptions.MatriculaDuplicadaException;
 
 import javax.persistence.PersistenceException;
 import java.util.List;

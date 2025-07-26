@@ -2,9 +2,9 @@ package com.poo.petshop.service;
 
 import com.poo.petshop.dao.TosadorDao;
 import com.poo.petshop.model.Tosador;
-import com.poo.petshop.utils.IsValidCpf;
-import com.poo.petshop.utils.exceptions.CpfDuplicadoException;
-import com.poo.petshop.utils.exceptions.TosadorNaoEncontradoException;
+import com.poo.petshop.util.IsValidCpf;
+import com.poo.petshop.util.exceptions.CpfDuplicadoException;
+import com.poo.petshop.util.exceptions.TosadorNaoEncontradoException;
 
 import javax.persistence.PersistenceException;
 import java.util.List;

@@ -3,24 +3,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.TutorController" prefWidth="600"
-            prefHeight="400">
-    <Label layoutX="20" layoutY="20" text="Nome:"/>
-    <TextField fx:id="nomeField" layoutX="80" layoutY="16" prefWidth="200"/>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.TutorController" prefWidth="600" prefHeight="400">
 
-    <Label layoutX="20" layoutY="60" text="CPF:"/>
-    <TextField fx:id="cpfField" layoutX="80" layoutY="56" prefWidth="200"/>
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
 
-    <Button text="Salvar" layoutX="300" layoutY="36" onAction="#salvarTutor"/>
+        <HBox spacing="10">
+            <Label text="Nome:"/>
+            <TextField fx:id="nomeField" prefWidth="200"/>
+            <Label text="CPF:"/>
+            <TextField fx:id="cpfField" prefWidth="200"/>
+            <Button text="Salvar" onAction="#salvarTutor"/>
+        </HBox>
 
-    <TableView fx:id="tutorTable" layoutX="20" layoutY="100" prefWidth="560" prefHeight="240">
-        <columns>
-            <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="280"/>
-            <TableColumn fx:id="cpfColumn" text="CPF" prefWidth="280"/>
-        </columns>
-    </TableView>
+        <TableView fx:id="tutorTable" prefHeight="240">
+            <columns>
+                <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="180"/>
+                <TableColumn fx:id="cpfColumn" text="CPF" prefWidth="180"/>
+                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="100"/>
+                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="100"/>
+            </columns>
+        </TableView>
 
-    <Label fx:id="statusLabel" layoutX="20" layoutY="360" prefWidth="560"/>
+        <Label fx:id="statusLabel" prefWidth="560"/>
 
-    <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 10 20 10 20;"/>
+        <HBox alignment="CENTER_LEFT">
+            <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+    </VBox>
 </AnchorPane>

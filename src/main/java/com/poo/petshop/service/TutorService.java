@@ -2,9 +2,9 @@ package com.poo.petshop.service;
 
 import com.poo.petshop.dao.TutorDao;
 import com.poo.petshop.model.Tutor;
-import com.poo.petshop.utils.IsValidCpf;
-import com.poo.petshop.utils.exceptions.CpfDuplicadoException;
-import com.poo.petshop.utils.exceptions.TutorNaoEncontradoException;
+import com.poo.petshop.util.IsValidCpf;
+import com.poo.petshop.util.exceptions.CpfDuplicadoException;
+import com.poo.petshop.util.exceptions.TutorNaoEncontradoException;
 
 import javax.persistence.PersistenceException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.poo.petshop.utils;
+package com.poo.petshop.util;
 
 public class IsValidCpf {
     public static boolean check(String cpf) {

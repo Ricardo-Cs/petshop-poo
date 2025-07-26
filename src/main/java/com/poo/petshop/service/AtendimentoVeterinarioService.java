@@ -2,7 +2,7 @@ package com.poo.petshop.service;
 
 import com.poo.petshop.dao.AtendimentoVeterinarioDao;
 import com.poo.petshop.model.AtendimentoVeterinario;
-import com.poo.petshop.utils.exceptions.AtendimentoVeterinarioNaoEncontradoException; // Exemplo de exceção
+import com.poo.petshop.util.exceptions.AtendimentoVeterinarioNaoEncontradoException; // Exemplo de exceção
 
 import javax.persistence.PersistenceException;
 import java.util.List;

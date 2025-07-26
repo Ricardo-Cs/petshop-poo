@@ -2,7 +2,7 @@ package com.poo.petshop.service;
 
 import com.poo.petshop.dao.AnimalDao;
 import com.poo.petshop.model.Animal;
-import com.poo.petshop.utils.exceptions.AnimalNaoEncontradoException;
+import com.poo.petshop.util.exceptions.AnimalNaoEncontradoException;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
