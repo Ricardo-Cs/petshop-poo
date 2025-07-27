@@ -1,8 +1,11 @@
 package com.poo.petshop.controller.animal;
 
 import com.poo.petshop.dao.AnimalDao;
+import com.poo.petshop.dao.TutorDao;
 import com.poo.petshop.model.Animal;
+import com.poo.petshop.model.Tutor;
 import com.poo.petshop.service.AnimalService;
+import com.poo.petshop.service.TutorService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +25,7 @@ import java.util.Optional;
 public class AnimalController {
 
     private final AnimalService animalService = new AnimalService(new AnimalDao());
+    private final TutorService tutorService = new TutorService(new TutorDao());
 
     @FXML
     private TextField nomeAnimalField;
@@ -32,13 +37,16 @@ public class AnimalController {
     private TextField racaField;
 
     @FXML
+    private ComboBox<Tutor> tutorComboBox;
+
+    @FXML
     private TextField pesquisaNomeAnimalField;
 
     @FXML
     private TableView<Animal> animalTable;
 
     @FXML
-    private TableColumn<Animal, String> idColumn;
+    private TableColumn<Animal, Long> idColumn;
 
     @FXML
     private TableColumn<Animal, String> nomeAnimalColumn;
@@ -48,6 +56,9 @@ public class AnimalController {
 
     @FXML
     private TableColumn<Animal, String> racaColumn;
+
+    @FXML
+    private TableColumn<Animal, String> tutorColumn;
 
     @FXML
     private TableColumn<Animal, Void> editarColumn;
@@ -63,10 +74,30 @@ public class AnimalController {
 
     @FXML
     public void initialize() {
+        tutorComboBox.setItems(FXCollections.observableArrayList(tutorService.findAll()));
+        tutorComboBox.setConverter(new StringConverter<Tutor>() {
+            @Override
+            public String toString(Tutor tutor) {
+                return (tutor != null) ? tutor.getNome() : "";
+            }
+            @Override
+            public Tutor fromString(String string) {
+                return null;
+            }
+        });
+
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeAnimalColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         especieColumn.setCellValueFactory(new PropertyValueFactory<>("especie"));
         racaColumn.setCellValueFactory(new PropertyValueFactory<>("raca"));
+
+        tutorColumn.setCellValueFactory(data -> {
+            Animal animal = data.getValue();
+            if (animal != null && animal.getTutor() != null) {
+                return new javafx.beans.property.SimpleStringProperty(animal.getTutor().getNome());
+            }
+            return new javafx.beans.property.SimpleStringProperty("Sem Tutor");
+        });
 
         animalTable.setItems(animalList);
 
@@ -139,9 +170,10 @@ public class AnimalController {
         String nome = nomeAnimalField.getText();
         String especie = especieField.getText();
         String raca = racaField.getText();
+        Tutor tutor = tutorComboBox.getValue();
 
-        if (nome.isEmpty() || especie.isEmpty() || raca.isEmpty()) {
-            statusAnimalLabel.setText("Por favor, preencha todos os campos.");
+        if (nome.isEmpty() || especie.isEmpty() || raca.isEmpty() || tutor == null) {
+            statusAnimalLabel.setText("Por favor, preencha todos os campos e selecione um tutor.");
             return;
         }
 
@@ -155,12 +187,12 @@ public class AnimalController {
         animal.setNome(nome);
         animal.setEspecie(especie);
         animal.setRaca(raca);
+        animal.setTutor(tutor);
 
         try {
-            if (animalSelecionadoParaEdicao == null) {
+            if (animal.getId() == null) {
                 animalService.save(animal);
             } else {
-                animal.setId(animalSelecionadoParaEdicao.getId());
                 animalService.update(animal);
             }
             carregarAnimais();
@@ -191,6 +223,7 @@ public class AnimalController {
         nomeAnimalField.setText(animal.getNome());
         especieField.setText(animal.getEspecie());
         racaField.setText(animal.getRaca());
+        tutorComboBox.setValue(animal.getTutor());
         animalSelecionadoParaEdicao = animal;
         statusAnimalLabel.setText("Editando animal: " + animal.getNome());
     }
@@ -238,5 +271,6 @@ public class AnimalController {
         nomeAnimalField.clear();
         especieField.clear();
         racaField.clear();
+        tutorComboBox.getSelectionModel().clearSelection();
     }
 }

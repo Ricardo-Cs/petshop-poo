@@ -3,47 +3,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.animal.AnimalController" prefWidth="650" prefHeight="450"> <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.animal.AnimalController" prefWidth="600" prefHeight="400">
+    <GridPane hgap="10" vgap="10">
+        <Label text="Nome:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nomeAnimalField" prefWidth="180" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
-        </padding>
+        <Label text="Espécie:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <TextField fx:id="especieField" prefWidth="120" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
 
-        <HBox spacing="10">
-            <Label text="Nome:"/>
-            <TextField fx:id="nomeAnimalField" prefWidth="120"/>
-            <Label text="Espécie:"/>
-            <TextField fx:id="especieField" prefWidth="100"/>
-            <Label text="Raça:"/>
-            <TextField fx:id="racaField" prefWidth="100"/>
-            <Button text="Salvar" onAction="#salvarAnimal"/>
-        </HBox>
+        <Label text="Raça:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="racaField" prefWidth="180" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="Pesquisar por Nome:"/>
-            <TextField fx:id="pesquisaNomeAnimalField" prefWidth="150"/>
-            <Button text="Pesquisar" onAction="#pesquisarAnimais"/>
-            <Button text="Limpar Pesquisa" onAction="#limparPesquisaAnimal"/>
-        </HBox>
+        <Label text="Tutor:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <ComboBox fx:id="tutorComboBox" prefWidth="180" GridPane.rowIndex="1" GridPane.columnIndex="3"/> <Button text="Salvar" onAction="#salvarAnimal" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="4" HBox.hgrow="ALWAYS"/>
+    </GridPane>
 
-        <TableView fx:id="animalTable" prefHeight="240">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="90"/>
-                <TableColumn fx:id="nomeAnimalColumn" text="Nome" prefWidth="150"/>
-                <TableColumn fx:id="especieColumn" text="Espécie" prefWidth="120"/>
-                <TableColumn fx:id="racaColumn" text="Raça" prefWidth="120"/>
-                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="90"/>
-                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="90"/>
-            </columns>
-        </TableView>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Pesquisar por Nome:"/>
+        <TextField fx:id="pesquisaNomeAnimalField" prefWidth="150"/>
+        <Button text="Pesquisar" onAction="#pesquisarAnimais"/>
+        <Button text="Limpar Pesquisa" onAction="#limparPesquisaAnimal"/>
+    </HBox>
 
-        <Label fx:id="statusAnimalLabel" prefWidth="560"/>
+    <TableView fx:id="animalTable" VBox.vgrow="ALWAYS"> <columns>
+        <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/> <TableColumn fx:id="nomeAnimalColumn" text="Nome" prefWidth="120"/>
+        <TableColumn fx:id="especieColumn" text="Espécie" prefWidth="90"/>
+        <TableColumn fx:id="racaColumn" text="Raça" prefWidth="90"/>
+        <TableColumn fx:id="tutorColumn" text="Tutor" prefWidth="120"/> <TableColumn fx:id="editarColumn" text="Editar" prefWidth="60"/>
+        <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="60"/>
+    </columns>
+    </TableView>
 
-        <HBox alignment="CENTER_LEFT">
-            <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
-        </HBox>
+    <Label fx:id="statusAnimalLabel" prefWidth="560"/>
 
-    </VBox>
+    <HBox alignment="CENTER_LEFT">
+        <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+    </HBox>
+
+</VBox>
 </AnchorPane>

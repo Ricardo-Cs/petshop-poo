@@ -37,15 +37,15 @@
 
         <Button text="Listagem de Funcionários" onAction="#abrirTelaListagemFuncionarios"
                 style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
-                GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
         <Button text="Atendimento Atendente" onAction="#abrirAtendimentoAtendente"
                 style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
-                GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
         <Button text="Atendimento Veterinário" onAction="#abrirAtendimentoVeterinario"
                 style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
-                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
         <Button text="Sair" onAction="#sairAplicacao"
                 style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250; -fx-background-color: #cc3333; -fx-text-fill: white;"

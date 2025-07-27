@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.util.StringConverter?>
+<?import com.poo.petshop.model.Veterinario?>
+<?import com.poo.petshop.model.Animal?>
+<?import com.poo.petshop.model.enums.EStatusAtendimento?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.poo.petshop.controller.atendimento.AtendenteVeterinarioController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.poo.petshop.controller.atendimento.AtendimentoVeterinarioController"
+            prefWidth="800" prefHeight="600">
 
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Registro de Atendimento Veterinário" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Veterinário:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="veterinarioComboBox" prefWidth="250" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Animal:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <ComboBox fx:id="animalComboBox" prefWidth="250" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <Label text="Data Entrada:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dataEntradaPicker" prefWidth="150" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Hora Entrada (HH:mm):" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="horaEntradaField" prefWidth="80" promptText="HH:mm" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <Label text="Data Saída:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dataSaidaPicker" prefWidth="150" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Hora Saída (HH:mm):" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <TextField fx:id="horaSaidaField" prefWidth="80" promptText="HH:mm" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="statusComboBox" prefWidth="150" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Separator/>
+
+        <Label text="Atendimentos Registrados" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <TableView fx:id="atendimentosTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="veterinarioColumn" text="Veterinário" prefWidth="120"/>
+                <TableColumn fx:id="animalColumn" text="Animal" prefWidth="100"/>
+                <TableColumn fx:id="entradaColumn" text="Entrada" prefWidth="120"/>
+                <TableColumn fx:id="saidaColumn" text="Saída" prefWidth="120"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="80"/>
+                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="60"/>
+                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="60"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="statusLabel" prefWidth="760"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Salvar Atendimento" onAction="#salvarAtendimentoVeterinario"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Limpar Campos" onAction="#limparCampos"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Voltar ao Menu" onAction="#voltarParaMenu"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+    </VBox>
 </AnchorPane>

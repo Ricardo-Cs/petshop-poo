@@ -10,7 +10,7 @@ public class AtendimentoVeterinarioDao extends GenericDao<AtendimentoVeterinario
 
     @Override
     public List<AtendimentoVeterinario> findAll() {
-        return executeQuery(em -> em.createQuery("FROM AtendimentoVeterinario", AtendimentoVeterinario.class).getResultList());
+        return executeQuery(em -> em.createQuery("FROM atendimentoVeterinario", AtendimentoVeterinario.class).getResultList());
     }
 
     @Override
@@ -21,7 +21,7 @@ public class AtendimentoVeterinarioDao extends GenericDao<AtendimentoVeterinario
     @Override
     public List<AtendimentoVeterinario> findByName(String name) {
         return executeQuery(em -> {
-            TypedQuery<AtendimentoVeterinario> query = em.createQuery("FROM AtendimentoVeterinario av WHERE av.observacoes LIKE :name", AtendimentoVeterinario.class);
+            TypedQuery<AtendimentoVeterinario> query = em.createQuery("FROM atendimentoVeterinario av WHERE av.observacoes LIKE :name", AtendimentoVeterinario.class);
             query.setParameter("name", "%" + name + "%");
             return query.getResultList();
         });

@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.util.StringConverter?>
+<?import com.poo.petshop.model.Tutor?>
+<?import com.poo.petshop.model.Atendente?>
+<?import com.poo.petshop.model.Tosador?>
+<?import com.poo.petshop.model.enums.ETipoAtendimento?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.poo.petshop.controller.atendimento.AtendimentoAtendenteController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="700" prefHeight="550">
 
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Registro de Atendimento do Atendente" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Atendente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="atendenteComboBox" prefWidth="300" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Tutor:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="tutorComboBox" prefWidth="300" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Tipo de Atendimento:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="tipoAtendimentoComboBox" prefWidth="300" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label fx:id="tosadorLabel" text="Tosador:" prefWidth="100"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0"
+                   visible="false" managed="false"/> <ComboBox fx:id="tosadorComboBox" prefWidth="300"
+                                                               GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                                               visible="false" managed="false"/> </GridPane>
+
+        <Separator/>
+
+        <Label text="Atendimentos Registrados" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <TableView fx:id="atendimentosTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="atendenteColumn" text="Atendente" prefWidth="100"/>
+                <TableColumn fx:id="tutorColumn" text="Tutor" prefWidth="100"/>
+                <TableColumn fx:id="tipoAtendimentoColumn" text="Tipo" prefWidth="100"/>
+                <TableColumn fx:id="tosadorColumn" text="Tosador" prefWidth="100"/>
+                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="60"/>
+                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="60"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="statusLabel" prefWidth="660"/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Salvar Atendimento" onAction="#salvarAtendimentoAtendente"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Limpar Campos" onAction="#limparCampos"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Voltar ao Menu" onAction="#voltarParaMenu"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+    </VBox>
 </AnchorPane>

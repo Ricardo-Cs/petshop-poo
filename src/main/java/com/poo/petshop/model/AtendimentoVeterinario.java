@@ -1,5 +1,7 @@
 package com.poo.petshop.model;
 
+import com.poo.petshop.model.enums.EStatusAtendimento;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 

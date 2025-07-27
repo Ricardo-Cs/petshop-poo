@@ -1,5 +1,8 @@
 package com.poo.petshop.model;
 
+import com.poo.petshop.model.enums.ETipoAtendimento;
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
 
 @Entity(name = "atendimentoAtendente")
@@ -11,7 +14,11 @@ public class AtendimentoAtendente {
     private Atendente atendente;
     @ManyToOne
     private Tutor tutor;
-    private String tipoAtendimento;
+    @Enumerated(EnumType.STRING)
+    private ETipoAtendimento tipoAtendimento;
+    @ManyToOne
+    @Nullable
+    private Tosador tosador;
 
     public AtendimentoAtendente() { }
 
@@ -39,11 +46,19 @@ public class AtendimentoAtendente {
         this.tutor = tutor;
     }
 
-    public String getTipoAtendimento() {
+    public ETipoAtendimento getTipoAtendimento() {
         return tipoAtendimento;
     }
 
-    public void setTipoAtendimento(String tipoAtendimento) {
+    public void setTipoAtendimento(ETipoAtendimento tipoAtendimento) {
         this.tipoAtendimento = tipoAtendimento;
+    }
+
+    public Tosador getTosador() {
+        return tosador;
+    }
+
+    public void setTosador(Tosador tosador) {
+        this.tosador = tosador;
     }
 }

@@ -1,4 +1,4 @@
-package com.poo.petshop.controller;
+package com.poo.petshop.controller.tutor;
 
 import com.poo.petshop.dao.TutorDao;
 import com.poo.petshop.model.Tutor;
