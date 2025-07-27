@@ -36,6 +36,9 @@ public class TutorController {
     private TableView<Tutor> tutorTable;
 
     @FXML
+    private TableColumn<Tutor, String> idColumn;
+
+    @FXML
     private TableColumn<Tutor, String> nomeColumn;
 
     @FXML
@@ -58,6 +61,7 @@ public class TutorController {
 
     @FXML
     public void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         cpfColumn.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 
@@ -151,7 +155,12 @@ public class TutorController {
         tutor.setCpf(cpf);
 
         try {
-            tutorService.save(tutor);
+            if (tutorSelecionadoParaEdicao == null) {
+                tutorService.save(tutor);
+            } else {
+                tutor.setId(tutorSelecionadoParaEdicao.getId());
+                tutorService.update(tutor);
+            }
             carregarTutores();
             limparCampos();
             tutorSelecionadoParaEdicao = null;

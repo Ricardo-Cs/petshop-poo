@@ -7,6 +7,10 @@ public class Veterinario extends Funcionario {
 
     private String crmv;
 
+    public Veterinario() {
+        super();
+    }
+
     public Veterinario(String nome, String cpf) {
         super(nome, cpf);
     }

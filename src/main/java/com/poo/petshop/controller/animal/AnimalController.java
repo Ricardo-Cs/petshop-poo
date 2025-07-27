@@ -1,4 +1,4 @@
-package com.poo.petshop.controller;
+package com.poo.petshop.controller.animal;
 
 import com.poo.petshop.dao.AnimalDao;
 import com.poo.petshop.model.Animal;
@@ -38,6 +38,9 @@ public class AnimalController {
     private TableView<Animal> animalTable;
 
     @FXML
+    private TableColumn<Animal, String> idColumn;
+
+    @FXML
     private TableColumn<Animal, String> nomeAnimalColumn;
 
     @FXML
@@ -60,6 +63,7 @@ public class AnimalController {
 
     @FXML
     public void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeAnimalColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         especieColumn.setCellValueFactory(new PropertyValueFactory<>("especie"));
         racaColumn.setCellValueFactory(new PropertyValueFactory<>("raca"));
@@ -120,7 +124,6 @@ public class AnimalController {
                 animais = animalService.findAll();
                 statusAnimalLabel.setText("Todos os animais carregados.");
             } else {
-                // Usa o método findByName do serviço para buscar no banco
                 animais = animalService.findByName(termoPesquisa);
                 statusAnimalLabel.setText(animais.size() + " animais encontrados para '" + termoPesquisa + "'.");
             }
@@ -154,7 +157,12 @@ public class AnimalController {
         animal.setRaca(raca);
 
         try {
-            animalService.save(animal);
+            if (animalSelecionadoParaEdicao == null) {
+                animalService.save(animal);
+            } else {
+                animal.setId(animalSelecionadoParaEdicao.getId());
+                animalService.update(animal);
+            }
             carregarAnimais();
             limparCampos();
             animalSelecionadoParaEdicao = null;

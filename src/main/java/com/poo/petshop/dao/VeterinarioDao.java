@@ -1,6 +1,5 @@
 package com.poo.petshop.dao;
 
-import com.poo.petshop.model.Tutor;
 import com.poo.petshop.model.Veterinario;
 
 import javax.persistence.NoResultException;
@@ -28,11 +27,11 @@ public class VeterinarioDao extends GenericDao<Veterinario>{
         });
     }
 
-    public Optional<Tutor> findByMatricula(String matricula) {
+    public Optional<Veterinario> findByMatricula(String matricula) {
         return executeQuery(em -> {
             try {
                 return Optional.ofNullable(
-                        em.createQuery("FROM Tutor t WHERE t.matricula = :matricula", Tutor.class)
+                        em.createQuery("FROM Veterinario t WHERE t.matricula = :matricula", Veterinario.class)
                                 .setParameter("matricula", matricula)
                                 .getSingleResult()
                 );
@@ -42,11 +41,11 @@ public class VeterinarioDao extends GenericDao<Veterinario>{
         });
     }
 
-    public Optional<Tutor> findByCrmv(String crmv) {
+    public Optional<Veterinario> findByCrmv(String crmv) {
         return executeQuery(em -> {
             try {
                 return Optional.ofNullable(
-                        em.createQuery("FROM Tutor t WHERE t.crmv = :crmv", Tutor.class)
+                        em.createQuery("FROM Veterinario t WHERE t.crmv = :crmv", Veterinario.class)
                                 .setParameter("crmv", crmv)
                                 .getSingleResult()
                 );

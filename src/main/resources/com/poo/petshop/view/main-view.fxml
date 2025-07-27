@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Pos?>
 
 <VBox fx:id="root" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.poo.petshop.controller.MainController"
@@ -18,21 +17,39 @@
 
     <Separator/>
 
-    <VBox spacing="15" alignment="CENTER">
-        <Button text="Cadastro de Tutores" onAction="#abrirTelaTutor"
-                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+    <GridPane hgap="15" vgap="15" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50.0" />
+            <ColumnConstraints percentWidth="50.0" />
+        </columnConstraints>
 
-        <Button text="Cadastro de Animais" onAction="#abrirTelaAnimal"
-                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+        <Button text="Listagem de Tutores" onAction="#abrirTelaTutor"
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+        <Button text="Listagem de Animais" onAction="#abrirTelaAnimal"
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+        <Button text="Cadastro de Funcionários" onAction="#abrirTelaCadastroFuncionario"
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+
+        <Button text="Listagem de Funcionários" onAction="#abrirTelaListagemFuncionarios"
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="3" GridPane.columnIndex="0"/>
 
         <Button text="Atendimento Atendente" onAction="#abrirAtendimentoAtendente"
-                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
         <Button text="Atendimento Veterinário" onAction="#abrirAtendimentoVeterinario"
-                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250;"
+                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
         <Button text="Sair" onAction="#sairAplicacao"
-                style="-fx-font-size: 16px; -fx-padding: 10 40; -fx-background-color: #cc3333; -fx-text-fill: white;"/>
+                style="-fx-font-size: 16px; -fx-padding: 10 30; -fx-pref-width: 250; -fx-background-color: #cc3333; -fx-text-fill: white;"
+                GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
 
-    </VBox>
+    </GridPane>
 </VBox>

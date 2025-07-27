@@ -28,6 +28,7 @@
 
         <TableView fx:id="tutorTable" prefHeight="240">
             <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="100"/>
                 <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="180"/>
                 <TableColumn fx:id="cpfColumn" text="CPF" prefWidth="180"/>
                 <TableColumn fx:id="editarColumn" text="Editar" prefWidth="100"/>

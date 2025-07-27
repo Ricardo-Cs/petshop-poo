@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.poo.petshop.controller.funcionario.ListagemFuncionariosController"
+            prefWidth="750" prefHeight="600">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Listagem de Funcionários" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Pesquisar por Nome:"/>
+            <TextField fx:id="pesquisaNomeFuncionarioField" prefWidth="250"/>
+            <Button text="Pesquisar" onAction="#pesquisarFuncionarios"/>
+            <Button text="Limpar Pesquisa" onAction="#limparPesquisa"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Cadastrar Novo" onAction="#abrirTelaCadastroFuncionario" style="-fx-font-size: 14px; -fx-padding: 5 15;"/>
+        </HBox>
+
+        <Separator/>
+
+        <TableView fx:id="funcionarioTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="nomeColumn" text="Nome" prefWidth="150"/>
+                <TableColumn fx:id="cpfColumn" text="CPF" prefWidth="120"/>
+                <TableColumn fx:id="matriculaColumn" text="Matrícula" prefWidth="100"/>
+                <TableColumn fx:id="dataAdmissaoColumn" text="Admissão" prefWidth="100"/>
+                <TableColumn fx:id="tipoColumn" text="Tipo" prefWidth="80"/>
+                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="80"/>
+                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="statusLabel" prefWidth="710"/>
+
+        <HBox alignment="CENTER_LEFT">
+            <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>

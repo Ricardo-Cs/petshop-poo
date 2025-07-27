@@ -10,6 +10,10 @@ public abstract class Funcionario extends Pessoa {
 
     private LocalDate dataAdmissao;
 
+    public Funcionario() {
+        super();
+    }
+
     public Funcionario(String nome, String cpf) {
         super(nome, cpf);
     }

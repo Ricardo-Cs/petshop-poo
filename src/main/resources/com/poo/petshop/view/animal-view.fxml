@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.AnimalController" prefWidth="600" prefHeight="400">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.animal.AnimalController" prefWidth="600" prefHeight="400">
 
     <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
         <padding>
@@ -30,6 +30,7 @@
 
         <TableView fx:id="animalTable" prefHeight="240">
             <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="90"/>
                 <TableColumn fx:id="nomeAnimalColumn" text="Nome" prefWidth="150"/>
                 <TableColumn fx:id="especieColumn" text="Espécie" prefWidth="120"/>
                 <TableColumn fx:id="racaColumn" text="Raça" prefWidth="120"/>

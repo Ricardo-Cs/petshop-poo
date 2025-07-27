@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.funcionario.CadastroFuncionarioController" prefWidth="700" prefHeight="600">
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Cadastro de Funcionários" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Tipo de Funcionário:"/>
+            <ComboBox fx:id="tipoFuncionarioComboBox" prefWidth="200"/>
+        </HBox>
+
+        <Separator/>
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Nome:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="nomeField" prefWidth="250" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="CPF:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="cpfField" prefWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <Label text="Data Contratação:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dataContratacaoPicker" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Matrícula:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="matriculaField" prefWidth="250" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Separator/>
+
+        <StackPane VBox.vgrow="ALWAYS">
+            <VBox fx:id="veterinarioFields" spacing="10" visible="false" managed="false">
+                <Label text="Dados Específicos do Veterinário" style="-fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="CRMV:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="crmvField" prefWidth="200" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+
+            <VBox fx:id="atendenteFields" spacing="10" visible="false" managed="false">
+                <Label text="Dados Específicos do Atendente" style="-fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Setor:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="setorField" prefWidth="200" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+
+            <VBox fx:id="tosadorFields" spacing="10" visible="false" managed="false">
+                <Label text="Dados Específicos do Tosador" style="-fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Especialidade:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="especialidadeField" prefWidth="200" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </GridPane>
+            </VBox>
+        </StackPane>
+
+        <Separator/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Salvar" onAction="#salvarFuncionario" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Limpar" onAction="#limparCampos" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+            <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" prefWidth="660"/>
+
+    </VBox>
+</AnchorPane>

@@ -1,7 +1,6 @@
 package com.poo.petshop.dao;
 
 import com.poo.petshop.model.Tosador;
-import com.poo.petshop.model.Tutor;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;

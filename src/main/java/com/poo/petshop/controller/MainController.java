@@ -30,6 +30,16 @@ public class MainController {
     }
 
     @FXML
+    private void abrirTelaCadastroFuncionario(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/cadastro-funcionario-view.fxml");
+    }
+
+    @FXML
+    private void abrirTelaListagemFuncionarios(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/listagem-funcionarios-view.fxml");
+    }
+
+    @FXML
     private void abrirAtendimentoAtendente(ActionEvent event) {
         carregarTela("/com/poo/petshop/view/atendimento-atendente-view.fxml");
     }
