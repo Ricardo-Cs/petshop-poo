@@ -7,6 +7,10 @@ public class Tosador extends Funcionario {
 
     private String especialidade;
 
+    public Tosador() {
+        super();
+    }
+
     public Tosador(String nome, String cpf) {
         super(nome, cpf);
     }

@@ -7,6 +7,10 @@ public class Atendente extends Funcionario{
 
     private String setor;
 
+    public Atendente() {
+        super();
+    }
+
     public Atendente(String nome, String cpf) {
         super(nome, cpf);
     }
