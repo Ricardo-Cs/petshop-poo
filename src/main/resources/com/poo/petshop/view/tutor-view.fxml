@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
+
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.TutorController" prefWidth="600" prefHeight="400">
 
     <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
@@ -13,10 +13,17 @@
 
         <HBox spacing="10">
             <Label text="Nome:"/>
-            <TextField fx:id="nomeField" prefWidth="200"/>
+            <TextField fx:id="nomeField" prefWidth="250"/>
             <Label text="CPF:"/>
-            <TextField fx:id="cpfField" prefWidth="200"/>
+            <TextField fx:id="cpfField" prefWidth="250"/>
             <Button text="Salvar" onAction="#salvarTutor"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Pesquisar por Nome:"/>
+            <TextField fx:id="pesquisaNomeField" prefWidth="250"/>
+            <Button text="Pesquisar" onAction="#pesquisarTutores"/>
+            <Button text="Limpar Pesquisa" onAction="#limparPesquisa"/>
         </HBox>
 
         <TableView fx:id="tutorTable" prefHeight="240">

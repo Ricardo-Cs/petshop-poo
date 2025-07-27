@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.poo.petshop.controller.AnimalController" prefWidth="600" prefHeight="400">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <HBox spacing="10">
+            <Label text="Nome:"/>
+            <TextField fx:id="nomeAnimalField" prefWidth="120"/>
+            <Label text="Espécie:"/>
+            <TextField fx:id="especieField" prefWidth="100"/>
+            <Label text="Raça:"/>
+            <TextField fx:id="racaField" prefWidth="100"/>
+            <Button text="Salvar" onAction="#salvarAnimal"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Pesquisar por Nome:"/>
+            <TextField fx:id="pesquisaNomeAnimalField" prefWidth="150"/>
+            <Button text="Pesquisar" onAction="#pesquisarAnimais"/>
+            <Button text="Limpar Pesquisa" onAction="#limparPesquisaAnimal"/>
+        </HBox>
+
+        <TableView fx:id="animalTable" prefHeight="240">
+            <columns>
+                <TableColumn fx:id="nomeAnimalColumn" text="Nome" prefWidth="150"/>
+                <TableColumn fx:id="especieColumn" text="Espécie" prefWidth="120"/>
+                <TableColumn fx:id="racaColumn" text="Raça" prefWidth="120"/>
+                <TableColumn fx:id="editarColumn" text="Editar" prefWidth="90"/>
+                <TableColumn fx:id="excluirColumn" text="Excluir" prefWidth="90"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="statusAnimalLabel" prefWidth="560"/>
+
+        <HBox alignment="CENTER_LEFT">
+            <Button text="Voltar" onAction="#voltarParaMenu" style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>

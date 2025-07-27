@@ -4,41 +4,53 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class MainController {
 
     @FXML
-    private Label myLabel;
-
-    @FXML
-    private VBox root; // id do container raiz do main.fxml
+    private VBox root;
 
     @FXML
     public void initialize() {
-        System.out.println("MainController inicializado. Label: " + myLabel.getText());
-    }
-
-    @FXML
-    private void handleButtonClick(ActionEvent event) {
-        myLabel.setText("Texto alterado pelo botão!");
-        System.out.println("Botão clicado. Texto do label alterado.");
+        System.out.println("MainController inicializado.");
     }
 
     @FXML
     private void abrirTelaTutor(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/tutor-view.fxml");
+    }
+
+    @FXML
+    private void abrirTelaAnimal(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/animal-view.fxml");
+    }
+
+    @FXML
+    private void abrirAtendimentoAtendente(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/atendimento-atendente-view.fxml");
+    }
+
+    @FXML
+    private void abrirAtendimentoVeterinario(ActionEvent event) {
+        carregarTela("/com/poo/petshop/view/atendimento-veterinario-view.fxml");
+    }
+
+    @FXML
+    private void sairAplicacao(ActionEvent event) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+    }
+
+    private void carregarTela(String caminhoFXML) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/poo/petshop/view/tutor-view.fxml"));
-            Parent tutorRoot = loader.load();
-
-            // Pega o stage atual via qualquer nó (botão ou root)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
+            Parent novaRoot = loader.load();
             Stage stage = (Stage) root.getScene().getWindow();
-
-            // Troca o root da cena atual pelo da tela de tutor
-            stage.getScene().setRoot(tutorRoot);
+            stage.getScene().setRoot(novaRoot);
         } catch (IOException e) {
             e.printStackTrace();
         }

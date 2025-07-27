@@ -3,15 +3,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
 
-<!-- Vincula este FXML ao seu controlador -->
-<VBox fx:id="root" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.poo.petshop.controller.MainController">
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.poo.petshop.controller.MainController"
+      alignment="CENTER" spacing="20">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets top="40" right="30" bottom="40" left="30"/>
     </padding>
 
-    <Label fx:id="myLabel" text="Clique no botão!" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #336699;" />
+    <Label text="PetShop - Menu Principal"
+           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
 
-    <Button text="Mudar Texto" onAction="#handleButtonClick" style="-fx-font-size: 16px; -fx-padding: 10 20 10 20;" />
-    <Button layoutX="20" layoutY="100" text="Abrir Tela de Tutores" onAction="#abrirTelaTutor" />
+    <Separator/>
+
+    <VBox spacing="15" alignment="CENTER">
+        <Button text="Cadastro de Tutores" onAction="#abrirTelaTutor"
+                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+
+        <Button text="Cadastro de Animais" onAction="#abrirTelaAnimal"
+                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+
+        <Button text="Atendimento Atendente" onAction="#abrirAtendimentoAtendente"
+                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+
+        <Button text="Atendimento Veterinário" onAction="#abrirAtendimentoVeterinario"
+                style="-fx-font-size: 16px; -fx-padding: 10 40;"/>
+
+        <Button text="Sair" onAction="#sairAplicacao"
+                style="-fx-font-size: 16px; -fx-padding: 10 40; -fx-background-color: #cc3333; -fx-text-fill: white;"/>
+
+    </VBox>
 </VBox>
