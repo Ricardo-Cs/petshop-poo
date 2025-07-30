@@ -204,7 +204,7 @@ public class ListagemFuncionariosController {
             Parent cadastroFuncionarioRoot = loader.load();
 
             CadastroFuncionarioController cadastroController = loader.getController();
-            cadastroController.setFuncionarioParaEdicao(funcionarioParaEditar); // Passa o funcionário para o controlador de cadastro
+            cadastroController.setFuncionarioParaEdicao(funcionarioParaEditar);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.getScene().setRoot(cadastroFuncionarioRoot);
