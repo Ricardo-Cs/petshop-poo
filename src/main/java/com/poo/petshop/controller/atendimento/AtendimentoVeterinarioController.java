@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter; // Importar DateTimeFormatter
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
@@ -80,9 +80,8 @@ public class AtendimentoVeterinarioController {
 
     private AtendimentoVeterinario atendimentoSelecionadoParaEdicao;
 
-    // Formatador para data e hora na tabela
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    // Formatador para a hora nos TextField (apenas HH:mm)
+
     private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
 
@@ -116,14 +115,13 @@ public class AtendimentoVeterinarioController {
         statusComboBox.setValue(EStatusAtendimento.ESPERA);
 
         dataEntradaPicker.setValue(LocalDate.now());
-        horaEntradaField.setText(LocalTime.now().format(timeFormatter)); // Formata a hora inicial
+        horaEntradaField.setText(LocalTime.now().format(timeFormatter));
         dataSaidaPicker.setValue(null);
         horaSaidaField.setText("");
 
         veterinarioColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getVeterinario().getNome()));
         animalColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getAnimal().getNome()));
 
-        // --- Formatação das colunas de data/hora na tabela ---
         entradaColumn.setCellValueFactory(new PropertyValueFactory<>("entrada"));
         entradaColumn.setCellFactory(column -> new TableCell<AtendimentoVeterinario, LocalDateTime>() {
             @Override
@@ -149,7 +147,6 @@ public class AtendimentoVeterinarioController {
                 }
             }
         });
-        // --- Fim da Formatação das colunas ---
 
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
@@ -224,7 +221,7 @@ public class AtendimentoVeterinarioController {
 
         LocalDateTime entrada;
         try {
-            LocalTime horaEntrada = LocalTime.parse(horaEntradaText, timeFormatter); // Usa o formatador de hora
+            LocalTime horaEntrada = LocalTime.parse(horaEntradaText, timeFormatter);
             entrada = LocalDateTime.of(dataEntrada, horaEntrada);
         } catch (DateTimeParseException e) {
             statusLabel.setText("Formato de hora de entrada inválido. Use HH:mm.");
@@ -234,7 +231,7 @@ public class AtendimentoVeterinarioController {
         LocalDateTime saida = null;
         if (dataSaida != null && !horaSaidaText.isEmpty()) {
             try {
-                LocalTime horaSaida = LocalTime.parse(horaSaidaText, timeFormatter); // Usa o formatador de hora
+                LocalTime horaSaida = LocalTime.parse(horaSaidaText, timeFormatter);
                 saida = LocalDateTime.of(dataSaida, horaSaida);
             } catch (DateTimeParseException e) {
                 statusLabel.setText("Formato de hora de saída inválido. Use HH:mm.");
@@ -279,11 +276,11 @@ public class AtendimentoVeterinarioController {
         veterinarioComboBox.setValue(atendimento.getVeterinario());
         animalComboBox.setValue(atendimento.getAnimal());
         dataEntradaPicker.setValue(atendimento.getEntrada().toLocalDate());
-        horaEntradaField.setText(atendimento.getEntrada().format(timeFormatter)); // Formata para edição
+        horaEntradaField.setText(atendimento.getEntrada().format(timeFormatter));
 
         if (atendimento.getSaida() != null) {
             dataSaidaPicker.setValue(atendimento.getSaida().toLocalDate());
-            horaSaidaField.setText(atendimento.getSaida().format(timeFormatter)); // Formata para edição
+            horaSaidaField.setText(atendimento.getSaida().format(timeFormatter));
         } else {
             dataSaidaPicker.setValue(null);
             horaSaidaField.clear();
