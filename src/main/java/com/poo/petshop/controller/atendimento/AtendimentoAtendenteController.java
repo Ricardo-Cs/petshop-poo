@@ -25,7 +25,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-//import javafx.scene.layout.HBox; // HBox tosadorSelectionBox foi removido
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -48,9 +47,8 @@ public class AtendimentoAtendenteController {
     @FXML
     private ComboBox<ETipoAtendimento> tipoAtendimentoComboBox;
 
-    //@FXML private HBox tosadorSelectionBox; // REMOVIDO
     @FXML
-    private Label tosadorLabel; // NOVO: Referência ao Label do Tosador
+    private Label tosadorLabel;
     @FXML
     private ComboBox<Tosador> tosadorComboBox;
 
@@ -118,7 +116,6 @@ public class AtendimentoAtendenteController {
 
         tipoAtendimentoComboBox.valueProperty().addListener((obs, oldValue, newValue) -> {
             boolean showTosador = (newValue == ETipoAtendimento.BANHO || newValue == ETipoAtendimento.TOSA);
-            // Controla a visibilidade do Label e do ComboBox
             tosadorLabel.setVisible(showTosador);
             tosadorLabel.setManaged(showTosador);
             tosadorComboBox.setVisible(showTosador);
