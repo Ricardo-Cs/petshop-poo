@@ -61,6 +61,10 @@ public class AtendenteService implements IService<Atendente> {
             throw new IllegalArgumentException("Atendente e nome não podem ser nulos/vazios.");
         }
 
+        if (entity.getCpf() == null || !IsValidCpf.check(entity.getCpf())) {
+            throw new IllegalArgumentException("CPF inválido.");
+        }    
+
         if (entity.getMatricula() == null) {
             throw new IllegalArgumentException("Matrícula inválida.");
         }
