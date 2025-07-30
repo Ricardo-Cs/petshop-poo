@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class CadastroFuncionarioController { // RENOMEADO
+public class CadastroFuncionarioController {
 
     private final VeterinarioService veterinarioService = new VeterinarioService(new VeterinarioDao());
     private final AtendenteService atendenteService = new AtendenteService(new AtendenteDao());
