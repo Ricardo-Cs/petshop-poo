@@ -63,6 +63,10 @@ public class VeterinarioService implements IService<Veterinario> {
             throw new IllegalArgumentException("Veterinário e nome não podem ser nulos/vazios.");
         }
 
+        if (entity.getCpf() == null || !IsValidCpf.check(entity.getCpf())) {
+            throw new IllegalArgumentException("CPF inválido.");
+        }
+        
         if (entity.getMatricula() == null || entity.getMatricula().trim().isEmpty()) {
             throw new IllegalArgumentException("Matrícula do veterinário não pode ser nula ou vazia.");
         }
